@@ -14,7 +14,7 @@ const songsSlice = createSlice({
   },
   //Tell this slice to also care about a particular action type from movies.
   extraReducers(builder) {
-    builder.addCase("movie/resetMovies", (state, action) => {
+    builder.addCase(moviesSlice.actions.resetMovies, (state, action) => {
       return [];
     });
   },
