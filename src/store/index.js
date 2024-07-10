@@ -12,6 +12,12 @@ const songsSlice = createSlice({
       state.splice(index, 1);
     },
   },
+  //Tell this slice to also care about a particular action type from movies.
+  extraReducers(builder) {
+    builder.addCase("movie/resetMovies", (state, action) => {
+      return [];
+    });
+  },
 });
 
 const moviesSlice = createSlice({
@@ -24,6 +30,10 @@ const moviesSlice = createSlice({
     removeMovie(state, action) {
       const index = state.indexOf(action.payload);
       state.splice(index, 1);
+    },
+    resetMovies(state, action) {
+      //Whatever you return is what you want your new state to be.
+      return [];
     },
   },
 });
@@ -39,4 +49,4 @@ const store = configureStore({
 
 export { store };
 export const { addSong, removeSong } = songsSlice.actions;
-export const { addMovie, removeMovie } = moviesSlice.actions;
+export const { addMovie, removeMovie, resetMovies } = moviesSlice.actions;
